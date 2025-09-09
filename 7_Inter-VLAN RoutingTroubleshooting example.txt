@@ -1,0 +1,125 @@
+# Troubleshooting Lab 2 – VLAN Connectivity Issue
+
+## Scenario
+
+* **VLAN 13:** PC1, PC3
+* **VLAN 24:** PC2, PC4
+
+PC1’s user reported that they are unable to communicate with other PCs on the network.
+There is **one misconfiguration per networking device**.
+
+The lab is successfully completed when **PC1 can ping all other PCs in the network**.
+
+---
+
+## Step 1: Check Router Configuration (R1)
+
+First, check the router interfaces:
+
+```bash
+Router> enable
+Router# show ip interface brief
+```
+
+**Observed issue:**
+
+```
+GigabitEthernet0/0.13  10.0.0.11  YES manual up  up
+```
+
+* The IP address for VLAN 13 is **incorrect**.
+* Correct IP should be **10.0.0.1**.
+
+Also, verify the default gateway on PC1:
+
+```bash
+PC1> ipconfig /all
+```
+
+* Ensure the default gateway matches **10.0.0.1**.
+
+**Fix the router misconfiguration:**
+
+```bash
+Router> enable
+Router# conf t
+Router(config)# interface g0/0.13
+Router(config-subif)# ip address 10.0.0.1 255.255.255.128
+Router(config-subif)# no shutdown
+```
+
+---
+
+## Step 2: Check Switch SW1
+
+Check VLAN assignment:
+
+```bash
+Switch> enable
+Switch# show vlan brief
+```
+
+**Observed issue:**
+
+```
+Fa0/1  VLAN0012  active
+```
+
+* Fa0/1 should be in **VLAN 13**, not VLAN 12.
+
+**Fix the VLAN assignment:**
+
+```bash
+Switch# conf t
+Switch(config)# interface fa0/1
+Switch(config-if)# switchport access vlan 13
+Switch(config-if)# exit
+```
+
+---
+
+## Step 3: Check Switch SW2 (Trunk Configuration)
+
+Check trunk ports:
+
+```bash
+Switch# show interface trunk
+```
+
+**Observed issue:**
+
+* No trunk is configured. The link between switches must be a trunk.
+
+**Fix the trunk configuration:**
+
+```bash
+Switch# conf t
+Switch(config)# interface g0/1
+Switch(config-if)# switchport mode trunk
+Switch(config-if)# exit
+```
+
+---
+
+## Step 4: Verify Connectivity
+
+Now, try pinging all PCs from PC1:
+
+```bash
+PC1> ping 10.0.0.2
+PC1> ping 10.0.0.130
+PC1> ping 10.0.0.131
+```
+
+* All pings should **succeed**.
+* The network is now correctly configured.
+
+---
+
+**Lab Complete ✅**
+
+---
+
+
+
+
