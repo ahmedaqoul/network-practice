@@ -14,11 +14,11 @@ This project features a high-availability, multi-floor network architecture desi
 
 ### ✅ Project Objectives
 
-1. **Redundancy:Implementing dual-links between L3 switches and core routers for zero downtime.
-2. **Network Segmentation:Using VLANs to isolate sensitive financial departments.
-3. **Dynamic Routing:Configuring OSPF Area 0 for fast convergence between core devices.
-4. **Security:Implementing Port Security on the Finance department and SSH for management.
-5. **Centralized Management: Deploying a dedicated Server Farm (DHCP, DNS, Email) with IP Helper-Address relay.
+1. Redundancy:Implementing dual-links between L3 switches and core routers for zero downtime.
+2. Network Segmentation:Using VLANs to isolate sensitive financial departments.
+3. Dynamic Routing:Configuring OSPF Area 0 for fast convergence between core devices.
+4. Security:Implementing Port Security on the Finance department and SSH for management.
+5. Centralized Management: Deploying a dedicated Server Farm (DHCP, DNS, Email) with IP Helper-Address relay.
 
 ---
 
@@ -158,3 +158,4 @@ All end-user PCs successfully received automatic IP addresses from the central D
 
 
 > Test Log: Reply from 192.168.60.10: bytes=32 time=1ms TTL=125
+
