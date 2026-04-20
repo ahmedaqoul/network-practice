@@ -30,9 +30,6 @@ Each lab has its own folder including:
 
 ## 
 
-You can find detailed video explanations of the labs on this YouTube channel:  
-📺 [Jeremy's IT Lab]
-
 
 Feel free to clone the repository, explore the labs, or follow along with the videos!
 
