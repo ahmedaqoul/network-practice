@@ -30,9 +30,6 @@ Each lab has its own folder including:
 
 ## 
 
-
-Feel free to clone the repository, explore the labs, or follow along with the videos!
-
 ---
 
-**Note:** This repository is for educational purposes. Feedback and contributions are welcome!
+**Note:** This repository is for educational and CV purposes. Feedback and contributions are welcome!
